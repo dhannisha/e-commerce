@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Products | Cacao & Co.</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-dashboard.css') }}">
+</head>
+<body>
+
+    <h1>Cacao & Co.</h1>
+    <h2>View Products</h2>
+
+    <a href="/add-product">Add Product</a>
+    <a href="/edit-product">Edit Product</a>
+    <a href="/delete-product">Delete Product</a>
+    <a href="/logout">Logout</a>
+
+    <h2>Product Collection</h2>
+
+    <p>Total Products: {{ products|length }}</p>
+
+    {% for product in products %}
+
+    <div>
+        <h3>{{ product.product_name }}</h3>
+
+        <img src="{{ url_for('static', filename=product.image_url.replace('static/', '', 1)) }}"
+             alt="{{ product.product_name }}" width="200">
+
+        <p>Product ID: {{ product.id }}</p>
+        <p>Description: {{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Stock: {{ product.stock }}</p>
+    </div>
+
+    <hr>
+
+    {% else %}
+
+    <p>No products available.</p>
+
+    {% endfor %}
+
+</body>
+</html>

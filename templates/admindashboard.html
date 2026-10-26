@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | Cacao & Co.</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-dashboard.css') }}">
+</head>
+<body>
+
+    <h1>Cacao & Co.</h1>
+    <h2>Admin Dashboard</h2>
+
+    <a href="/add-product">Add Product</a>
+    <a href="/view-products">View Products</a>
+    <a href="/edit-product">Edit Product</a>
+    <a href="/delete-product">Delete Product</a>
+    <a href="/logout">Logout</a>
+
+    <h2>Add a Product</h2>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+
+        <label>Product ID:</label>
+        <input type="text" name="id">
+
+        <br><br>
+
+        <label>Product Name:</label>
+        <input type="text" name="product_name">
+
+        <br><br>
+
+        <label>Description:</label>
+        <textarea name="description"></textarea>
+
+        <br><br>
+
+        <label>Price:</label>
+        <input type="number" name="price" step="1">
+
+        <br><br>
+
+        <label>Stock Quantity:</label>
+        <input type="number" name="stock" step="1">
+
+        <br><br>
+
+        <label>Product Image:</label>
+        <input type="file" name="image_url" accept="image/*">
+
+        <br><br>
+
+        <input type="submit" value="Add Product">
+
+    </form>
+
+</body>
+</html>
